@@ -13,7 +13,7 @@ class VacancyController extends Controller
     {
 
         $vacancies = Vacancy::all()->sortByDesc('id');
-        return view('jobs',[
+        return view('jobs.index',[
             'vacancies' => $vacancies
         ]);
 
@@ -21,7 +21,7 @@ class VacancyController extends Controller
 
     public function create()
     {
-        return view('create');
+        return view('jobs.create');
     }
 
   
@@ -40,14 +40,14 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect('/jobs');
+        return redirect('/jobs.index');
 
     }
 
   
     public function show(Vacancy $vacancy)
     {
-        return view('job',[
+        return view('jobs.show',[
             'vacancy' => $vacancy
         ]);
     }

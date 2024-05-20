@@ -15,6 +15,7 @@
         <div class="font-light text-base"> {{ $job->salary }}</div>
         <div class="font-light text-base"> {{ $job->company }}</div>
         <div class="font-light text-base"> {{ $job->location }}</div>
+        <div class="font-light text-base"> {{ $job->id }}</div>
     </div>   
 </li>
 
