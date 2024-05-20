@@ -1,10 +1,10 @@
-<x-layout title='job'>
+<x-layout title='message'>
 
     <div class="p-4">
 
         <x-back></x-back>
 
-        <x-vacancy.vacancy :vacancy="$vacancy"></x-vacancy>
+        <x-message.message :message="$message"></x-message.messages>
         
     </div>
 

@@ -14,8 +14,8 @@
         </div>
         <div class="hidden lg:flex lg:gap-x-12">
             <x-navlink href='/' :live="request()->is('/')">Home</x-navlink>
-            <x-navlink href='jobs' :live="request()->is('jobs')">Jobs</x-navlink>
-            <x-navlink href='messages' :live="request()->is('messages')">Messages</x-navlink>
+            <x-navlink href='/jobs' :live="request()->is('jobs')">Jobs</x-navlink>
+            <x-navlink href='/messages' :live="request()->is('messages')">Messages</x-navlink>
         </div>
         <div class="hidden lg:flex lg:flex-1 lg:justify-end">
           <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span>&rarr;</span></a>

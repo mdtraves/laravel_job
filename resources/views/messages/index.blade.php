@@ -2,13 +2,13 @@
 
     <div class="p-4">
 
-        <x-heading>Jobs</x-heading>
+        <x-heading>Messages</x-heading>
 
         <ul class="flex flex-col gap-2 text-lg p-2 w-full">
 
-            @foreach( $vacancies as $job )
+            @foreach( $messages as $message )
 
-                <x-vacancy.listing :job="$job"></x-vacancy>
+                <x-message.list :message="$message"></x-message.list>
         
             @endforeach
 

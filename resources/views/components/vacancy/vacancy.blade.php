@@ -1,7 +1,7 @@
 @props(['vacancy'])
 
 <li class="flex flex-col w-full pb-3">
-  
+
     <div {{ $attributes->merge(['class' => "text-xl font-semibold flex  " . ($vacancy->salary > 30000 ? 'text-emerald-500' : 'text-red-600')]) }}>
         {{ $vacancy->title }}
     </div> 
