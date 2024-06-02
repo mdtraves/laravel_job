@@ -27,6 +27,7 @@ class VacancyController extends Controller
   
     public function store(StoreVacancyRequest $request)
     {
+
         $vacancy = Vacancy::create(
             [
                 'title' => $request->title,
@@ -40,11 +41,11 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect('/jobs.index');
+        return redirect('jobs/')->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$vacancy->title job added" ]);;
 
     }
-
   
+    
     public function show(Vacancy $vacancy)
     {
         return view('jobs.show',[
@@ -52,34 +53,27 @@ class VacancyController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+   
     public function edit(Vacancy $vacancy)
     {
-        //
+        
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(UpdateVacancyRequest $request, Vacancy $vacancy)
     {
-        //
+        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Vacancy $vacancy)
     {
         $vacancy = Vacancy::find($vacancy->id);
  
         $vacancy->delete();
 
-        return redirect('/jobs')->with([ 'id' => $vacancy->id, 'title' => $vacancy->title ]);
+        return redirect('/jobs')->with([ 'id' => $vacancy->id, 'title' => $vacancy->title, 'flash' => 'delete' , 'color' => 'bg-red-500' , 'flash-message' => "$vacancy->title job removed" ]);
 
      }
-
 
 }

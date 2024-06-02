@@ -18,9 +18,14 @@
 <script>
 
 document.addEventListener("DOMContentLoaded", function() {
-  setTimeout(function() {
-    document.getElementById("flash-message").style.display = "none";
-  }, 4000);
+  const messageElement = document.getElementById("flash-message");
+  if (messageElement) {
+    setTimeout(function() {
+      messageElement.style.display = "none";
+    }, 4000);
+  } else {
+    console.log("No flash message");
+  }
 });
 
 </script>

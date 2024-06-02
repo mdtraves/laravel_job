@@ -5,19 +5,19 @@
     
         <x-heading class="text-white">Jobs</x-heading>
     
-    
     </div>
 
+    <div class="p-4 container mx-auto">
 
-    <div class="p-4">
+        <x-btn-link class="bg-blue-500" href="jobs/create">Add Job</x-btn-link>
 
-        @if (session()->get('title'))
+        @if (session()->get('flash'))
 
-            <x-alert class="bg-red-500" >Job: {{ session()->get('title') }} - deleted</x-alert>
+            <x-alert :class="session()->get('color')" >{{ session()->get('flash-message') }}</x-alert>
             
         @endif
 
-        <ul class="flex flex-col gap-2 text-lg p-2 w-full container mx-auto">
+        <ul class="flex flex-col gap-2 text-lg w-full">
 
             @foreach( $vacancies as $job )
 
