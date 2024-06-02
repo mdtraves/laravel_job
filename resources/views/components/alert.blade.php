@@ -1,0 +1,1 @@
+<div id="flash-message" {{ $attributes->merge( ['class' => 'w-full flex justify-center text-xl text-white py-3']) }}>{{ $slot }}</div>

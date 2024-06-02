@@ -73,6 +73,13 @@ class VacancyController extends Controller
      */
     public function destroy(Vacancy $vacancy)
     {
-        //
-    }
+        $vacancy = Vacancy::find($vacancy->id);
+ 
+        $vacancy->delete();
+
+        return redirect('/jobs')->with([ 'id' => $vacancy->id, 'title' => $vacancy->title ]);
+
+     }
+
+
 }
