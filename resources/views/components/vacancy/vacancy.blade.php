@@ -18,9 +18,7 @@
         @csrf
         @method('DELETE')
         <x-btn type="submit" class="bg-red-500">Delete</x-btn>
-        <x-btn type="button" form="edit-form" class="bg-blue-500">Edit</x-btn>
+        <x-btn-link href="/jobs/edit/{{ $vacancy->id }}"  class="bg-blue-500">Edit</x-link>
     </form>
    
-
 </li>
-

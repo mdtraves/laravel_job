@@ -9,14 +9,14 @@
 
     <div class="p-4 container mx-auto">
 
-        <x-btn-link class="bg-blue-500" href="jobs/create">Add Job</x-btn-link>
+        <div class="flex w-full justify-between">
 
-        @if (session()->get('flash'))
+            <x-back></x-back>
 
-            <x-alert :class="session()->get('color')" >{{ session()->get('flash-message') }}</x-alert>
-            
-        @endif
+            <x-btn-link class="bg-blue-500" href="jobs/create">Add Job</x-btn-link>
 
+        </div>
+       
         <ul class="flex flex-col gap-2 text-lg w-full">
 
             @foreach( $vacancies as $job )

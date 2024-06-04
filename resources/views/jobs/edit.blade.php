@@ -4,7 +4,7 @@
 
         <x-link href="/jobs">back to jobs</x-link>
 
-        <x-vacancy.vacancy :vacancy="$vacancy"></x-vacancy>
+        <x-vacancy.edit :vacancy="$vacancy"></x-vacancy.edit>
         
     </div>
 

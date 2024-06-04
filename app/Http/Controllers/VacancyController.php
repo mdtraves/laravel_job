@@ -41,7 +41,7 @@ class VacancyController extends Controller
 
         $vacancy->save();
 
-        return redirect('jobs/')->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$vacancy->title job added" ]);;
+        return redirect('jobs/')->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$vacancy->title job added" ]);
 
     }
   
@@ -56,14 +56,28 @@ class VacancyController extends Controller
    
     public function edit(Vacancy $vacancy)
     {
-        
+        return view('jobs.edit',[
+            'vacancy' => $vacancy
+        ]);
     }
 
 
     public function update(UpdateVacancyRequest $request, Vacancy $vacancy)
     {
+
+        Vacancy::find($vacancy->id)->update([
+            'title' => $request->title,
+            'salary' => $request->salary,
+            'company' => $request->company,
+            'location' => $request->location,
+            'description' => $request->description,
+            'expiry_date' => $request->expiry_date,
+    ]);
         
+        return redirect("jobs/$vacancy->id")->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$request->title job updated" ]);
     }
+
+    
 
     
     public function destroy(Vacancy $vacancy)

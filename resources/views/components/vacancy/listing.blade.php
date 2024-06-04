@@ -9,8 +9,8 @@
         <div {{ $attributes->merge(['class' => "text-base font-semibold flex  " . ($job->salary > 30000 ? 'text-emerald-500' : 'text-red-600')]) }}>
             {{ $job->expiry_date }}
         </div> 
-        
     </div>  
+    
     <div class="flex gap-x-3 mb-2">
         <div class="font-light text-base"> {{ $job->salary }}</div>
         <div class="font-light text-base"> {{ $job->company }}</div>

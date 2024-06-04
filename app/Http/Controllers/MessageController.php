@@ -8,9 +8,7 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+ 
     public function index()
     {
         $messages = Message::all()->sortByDesc('id');
@@ -19,25 +17,33 @@ class MessageController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+ 
     public function create()
     {
-        //
+        return view('messages.create');
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+  
     public function store(StoreMessageRequest $request)
     {
-        //
+        
+        $messages = Message::create(
+            [
+                'title' => $request->title,
+                'salary' => $request->salary,
+                'company' => $request->company,
+                'location' => $request->location,
+                'message' => $request->message,
+            ]
+        );
+
+        $messages->save();
+
+        return redirect('messages/')->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$request->title message added" ]);
     }
 
-    /**
-     * Display the specified resource.
-     */
+ 
     public function show(Message $message)
     {
         return view('messages.show',[
@@ -45,27 +51,36 @@ class MessageController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+ 
     public function edit(Message $message)
     {
-        //
+        return view('messages.edit',[
+            'message' => $message
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+   
     public function update(UpdateMessageRequest $request, Message $message)
     {
-        //
+        Message::find($message->id)->update([
+            'title' => $request->title,
+            'salary' => $request->salary,
+            'company' => $request->company,
+            'location' => $request->location,
+            'message' => $request->message,
+    ]);
+        
+        return redirect("messages/$message->id")->with([ 'id' => $request->id, 'title' => $request->title, 'flash' => 'create' , 'color' => 'bg-blue-500' , 'flash-message' => "$request->title message updated" ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+   
     public function destroy(Message $message)
     {
-        //
+        $vacancy = Message::find($message->id);
+ 
+        $vacancy->delete();
+
+        return redirect('/jobs')->with([ 'id' => $message->id, 'title' => $message->title, 'flash' => 'delete' , 'color' => 'bg-red-500' , 'flash-message' => "$message->title job removed" ]);
     }
+
 }

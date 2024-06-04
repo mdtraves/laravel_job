@@ -9,7 +9,14 @@
 </head>
 <body>
     <x-nav></x-nav>
-    <div class="">
+
+    @if (session()->get('flash'))
+
+      <x-alert :class="session()->get('color')" >{{ session()->get('flash-message') }}</x-alert>
+      
+    @endif
+
+    <div>
         {{ $slot }}
     </div>
 </body>
